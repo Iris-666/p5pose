@@ -45,9 +45,9 @@ function drawKeypoints(poses) {
   poses.forEach((pose) =>
     pose.pose.keypoints.forEach((keypoint) => {
       if (keypoint.score > 0.2) {
-        p5.fill(0, 255, 0);
+        p5.fill(225,107,140);
         p5.noStroke();
-        p5.ellipse(keypoint.position.x, keypoint.position.y, 10, 10);
+        p5.ellipse(keypoint.position.x, keypoint.position.y, 20, 10);
       }
     })
   )
@@ -57,7 +57,7 @@ function drawSkeleton(poses) {
     poses.forEach((pose) => {
       pose.skeleton.forEach((skeleton) => {
         const [p1, p2] = skeleton;
-        p5.stroke(255, 0, 0);
+        p5.stroke(255, 107, 140);
         p5.line(p1.position.x, p1.position.y, p2.position.x, p2.position.y);
       });
     });
