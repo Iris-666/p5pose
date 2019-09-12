@@ -117,142 +117,19 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"sketch.js":[function(require,module,exports) {
+})({"startbutton.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.setSketch = setSketch;
-exports.setup = setup;
-exports.draw = draw;
+exports.poseNetStart = poseNetStart;
 
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
-
-function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-// import "p5/lib/addons/p5.dom";
-var scale = 1;
-var width = 640 * scale;
-var height = 480 * scale; // setSketch sets this
-
-var p5; // setup initializes this
-
-var video;
-var osc;
-
-function setSketch(sketch) {
-  p5 = sketch;
+function poseNetStart() {
+  var x = document.getElementById("startbutton");
+  alert(x.innerHTML);
 }
-
-function setup() {
-  p5.createCanvas(width, height);
-  video = p5.select('video') || p5.createCapture(p5.VIDEO);
-  video.size(width, height); // Create a new poseNet method with a single detection
-
-  var poseNet = ml5.poseNet(video, function () {
-    return p5.select('#status').hide();
-  }); // Every time we get a new pose, draw it
-  // Hide the video element, and just show the canvas
-
-  video.hide(); // backgroundColor = color(255,0,255);
-
-  var audioButton = p5.createButton('click to start audio');
-  audioButton.position(5, height + 100);
-  audioButton.mouseClicked(function () {
-    p5.userStartAudio().then(function () {
-      audioButton.remove();
-      osc = new window.p5.Oscillator(); // now you can call osc methods to make sound happen
-    });
-  });
-  osc = new window.p5.Oscillator();
-  osc.setType('sine');
-  osc.freq(240);
-  osc.amp(0.05);
-  osc.start();
-  var startButton = p5.createButton('click to start');
-  startButton.position(5, height + 80);
-  startButton.mouseClicked(function () {
-    poseNet.on('pose', drawPoses);
-    startButton.remove();
-  });
-}
-
-function draw() {}
-
-function drawPoses(poses) {
-  p5.translate(width, 0); // move to far corner
-
-  p5.scale(-1.0, 1.0);
-  p5.image(video, 0, 0, video.width, video.height);
-  drawKeypoints(poses);
-  drawSkeleton(poses);
-} // Draw ellipses over the detected keypoints
-
-
-function drawKeypoints(poses) {
-  poses.forEach(function (pose) {
-    return pose.pose.keypoints.forEach(function (keypoint) {
-      var x = document.getElementById("confidence");
-      console.log(x.value);
-
-      if (keypoint.score > x.value) {
-        p5.fill(225, 107, 140);
-        p5.noStroke();
-        p5.ellipse(keypoint.position.x, keypoint.position.y, 20, 10);
-      }
-    });
-  });
-}
-
-function drawSkeleton(poses) {
-  poses.forEach(function (pose) {
-    pose.skeleton.forEach(function (skeleton) {
-      var _skeleton = _slicedToArray(skeleton, 2),
-          p1 = _skeleton[0],
-          p2 = _skeleton[1];
-
-      p5.stroke(255, 107, 140);
-      p5.line(p1.position.x, p1.position.y, p2.position.x, p2.position.y);
-    });
-  });
-} // export function clickButton(){
-//   var html ="<input type=\"button\" value=\"click here to start\" onclick=\"poseNetOn();\">";
-//   document.getElementById("click").innerHTML=html;
-// }
-},{}],"index.js":[function(require,module,exports) {
-"use strict";
-
-var sketch = _interopRequireWildcard(require("./sketch"));
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
-
-// import p5 from 'p5';
-// Force page refresh on hot reload
-if (module.hot) {
-  module.hot.accept(function () {
-    return window.location.reload();
-  });
-}
-
-var s2 = function s2(p5s) {
-  sketch.setSketch(p5s);
-
-  p5s.setup = function () {
-    return sketch.setup(sketch);
-  };
-
-  p5s.draw = function () {
-    return sketch.draw(sketch);
-  };
-};
-
-new p5(s2, 'container');
-},{"./sketch":"sketch.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -455,5 +332,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../node_modules/parcel-bundler/src/builtins/hmr-runtime.js","index.js"], null)
-//# sourceMappingURL=/src.e31bb0bc.js.map
+},{}]},{},["../node_modules/parcel-bundler/src/builtins/hmr-runtime.js","startbutton.js"], null)
+//# sourceMappingURL=/startbutton.3b5c2440.js.map
