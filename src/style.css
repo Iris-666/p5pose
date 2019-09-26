@@ -7,3 +7,16 @@ body video {
     opacity: 0.5;
     /* left: 0; */
 }
+
+#intro {
+    font-size: 20px;
+    position: absolute;
+    top: 515px;
+    left: 10px;
+}
+#sliderintro {
+    font-size: 20px;
+    position: absolute;
+    top: 485px;
+    left: 10px;
+}

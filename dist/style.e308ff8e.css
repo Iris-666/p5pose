@@ -8,4 +8,17 @@ body video {
     /* left: 0; */
 }
 
+#intro {
+    font-size: 20px;
+    position: absolute;
+    top: 515px;
+    left: 10px;
+}
+#sliderintro {
+    font-size: 20px;
+    position: absolute;
+    top: 485px;
+    left: 10px;
+}
+
 /*# sourceMappingURL=/style.e308ff8e.css.map */
