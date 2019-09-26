@@ -26,3 +26,19 @@ This will open PoseNet in a browser window.
 ## License
 
 MIT License
+
+# Project name
+
+The Marionette
+
+# Author
+
+Iris
+
+# link to the video of my project
+
+Google Drive: https://drive.google.com/file/d/1FfzFHKfXpMgXe5nrgMiljylHC_kIFf9y/view?usp=sharing
+Youtube: https://youtu.be/zDcH-oLDa6A
+
+
+
